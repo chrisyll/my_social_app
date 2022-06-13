@@ -1,0 +1,6 @@
+.MenuContainer {
+    display: flex;
+    flex: 1 0 100px;
+    justify-content: flex-end;
+    align-items: center;
+}

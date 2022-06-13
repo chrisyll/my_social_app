@@ -1,0 +1,30 @@
+.NavigationItemsContainer {
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.NavigationFlexContainer {
+    display: flex;
+    width: 61.8%;
+}
+
+.TitleContainer {
+    display: flex;
+    flex: 1 0 100px;
+    align-items: center;
+}
+
+.Title {
+    width: fit-content;
+    height: fit-content;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    text-decoration: none;
+    color: black;
+}

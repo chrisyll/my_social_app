@@ -1,15 +1,21 @@
 import React from 'react';
-import MyAux from '../../hoc/MyAux/MyAux';
+import { Link } from 'react-router-dom';
+import SearchBar from '../SearchBar/SearchBar';
+import Menu from '../Menu/Menu';
+import classes from './NavigationItems.module.css';
 
-
-function NavigationItems() {
+const navigationItems = () => {
     return ( 
-        <MyAux >
-            <div>
-        
+            <div className= {classes.NavigationItemsContainer}>
+                <div className= {classes.NavigationFlexContainer}>
+                    <div className = {classes.TitleContainer}>
+                        <Link className= {classes.Title} to = "/">Galerie</Link>
+                    </div>
+                    <SearchBar />
+                    <Menu />
+                </div>
             </div>
-        </MyAux>
     );
 }
 
-export default NavigationItems;
+export default navigationItems;

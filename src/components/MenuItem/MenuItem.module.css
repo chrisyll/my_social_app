@@ -1,0 +1,7 @@
+.Link {
+    text-decoration: none;
+    outline: none;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 16px;
+}

@@ -1,0 +1,21 @@
+.StoryItem {
+    width: 64px;
+    height: 100%;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.StoryImage {
+    width: 64px;
+    height: 64px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.StoryName {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+}

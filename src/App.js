@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-
-import NavigationItems from './components/NavigationItems/NavigationItems';
+import Layout from './containers/Layout/Layout';
 
 class App extends Component {
   
   render() { 
     return (
-      <NavigationItems />
+      <div>
+        <Layout />
+      </div>
     );
   }
 }
