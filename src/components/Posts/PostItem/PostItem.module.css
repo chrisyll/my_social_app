@@ -47,7 +47,6 @@
     background-color: white;
     border: none;
     outline: none;
-    color: rgba(0, 38, 255, 0.3);
+    color: rgba(0, 38, 255);
     font-weight: bolder;
-    cursor: pointer;
 }

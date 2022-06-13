@@ -10,8 +10,10 @@
 .StoryImage {
     width: 64px;
     height: 64px;
-    border: 1px solid black;
+    border: 2px solid grey;
+    outline: 2px solid purple;
     border-radius: 50%;
+    box-sizing: border-box;
 }
 
 .StoryName {

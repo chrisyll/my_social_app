@@ -8,15 +8,19 @@ import ProfileIcon from '../../../assets/icons/Profile_Icon.png';
 const PostItem = () => {
 
     const [ height, setHeight ] = useState(0);
-    
+    const [ commentInput, setCommentInput ] = useState('');
+ 
     //this is called for every post we render but 
     //it should only be called once and set the same height for every post
     const ref = useCallback( node => {
         if ( node !== null ) {
             setHeight(node.getBoundingClientRect().width);
-            console.log(height);
         }
     }, []);
+
+    const handleInput = (e) => {
+        setCommentInput(e.target.value);
+    }
 
     return ( 
         <div className= { classes.PostItem } >
@@ -45,8 +49,14 @@ const PostItem = () => {
                 </div>
             </div>
             <div className= { classes.PostAddComment }>
-                <input placeholder = 'Add a comment..' />
-                <button> Post </button>
+                <input placeholder = 'Add a comment..' onChange = { (event) => handleInput(event) } />
+                <button 
+                    style = {commentInput.length ===  0 
+                    ? { opacity: '0.3', cursor: 'default' } 
+                    : { opacity: '0.7', cursor: 'pointer' } 
+                }> 
+                    Post 
+                </button>
             </div>
         </div>
     );
