@@ -1,23 +1,23 @@
 .StoryItem {
-    width: 64px;
-    height: 100%;
-    margin: 0 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  width: 64px;
+  height: 100%;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .StoryImage {
-    width: 64px;
-    height: 64px;
-    border: 2px solid grey;
-    outline: 2px solid purple;
-    border-radius: 50%;
-    box-sizing: border-box;
+  width: 64px;
+  height: 64px;
+  border: 2px solid grey;
+  outline: 2px solid purple;
+  border-radius: 50%;
+  box-sizing: border-box;
 }
 
 .StoryName {
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
 }

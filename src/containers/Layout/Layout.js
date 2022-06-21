@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
-import NavigationItems from '../../components/NavigationItems/NavigationItems';
-import MainPage from '../MainPage/MainPage';
+import React, { Component } from "react";
+import NavigationItems from "../../components/NavigationItems/NavigationItems";
+import Feed from "../Feed/Feed";
 
 class Layout extends Component {
-    
-    state = {  }
+  state = {};
 
-    render() { 
-        return ( 
-            <div>
-                <NavigationItems />
-                <MainPage />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <NavigationItems />
+        <Feed />
+      </div>
+    );
+  }
 }
- 
+
 export default Layout;

@@ -1,0 +1,60 @@
+.Wrapper {
+  height: 100vh;
+  position: relative;
+}
+
+.LoginContainer {
+  width: 30%;
+  height: 61.8%;
+  position: absolute;
+  top: 15%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  border: 1px solid #dbdbdb;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.LoginTitle {
+  font-family: "yellowtail", cursive;
+  font-size: 64px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.LoginForm {
+  width: 61.8%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.LoginContainer input {
+  width: 100%;
+  outline: none;
+  border: 1px solid #dbdbdb;
+  background-color: rgb(245, 245, 245);
+  padding: 12px;
+  margin-top: 8px;
+  font-size: 12px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.LoginContainer button {
+  width: 100%;
+  padding: 8px;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 4px;
+  color: white;
+  margin-top: 16px;
+}
