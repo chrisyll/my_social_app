@@ -1,9 +1,4 @@
-.Wrapper {
-  height: 100vh;
-  position: relative;
-}
-
-.LoginContainer {
+.SignupContainer {
   width: 30%;
   height: 61.8%;
   position: absolute;
@@ -11,16 +6,16 @@
   margin: 0 auto;
   left: 0;
   right: 0;
-  border: 1px solid #dbdbdb;
-  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   vertical-align: middle;
+  background-color: white;
+  border: 1px solid #dbdbdb;
 }
 
-.LoginTitle {
+.SignupTitle {
   font-family: "yellowtail", cursive;
   font-size: 64px;
   cursor: pointer;
@@ -29,7 +24,7 @@
   margin-bottom: 16px;
 }
 
-.LoginForm {
+.SignupForm {
   width: 61.8%;
   margin: 0 auto;
   display: flex;
@@ -37,7 +32,7 @@
   box-sizing: border-box;
 }
 
-.LoginContainer input {
+.SignupForm input {
   width: 100%;
   outline: none;
   border: 1px solid #dbdbdb;
@@ -49,7 +44,7 @@
   border-radius: 4px;
 }
 
-.LoginContainer button {
+.SignupForm button {
   width: 100%;
   padding: 8px;
   outline: none;

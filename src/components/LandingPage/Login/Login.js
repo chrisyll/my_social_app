@@ -6,6 +6,8 @@ import validator from "validator";
 const Login = () => {
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [passwordFocus, setPasswordFocus] = useState(false);
 
   const handleEmailInput = (value) => {
     setEmail(value);
@@ -14,11 +16,16 @@ const Login = () => {
   const handlePasswordInput = (value) => {
     setPassword(value);
   };
-  const handleValidation = () => {
+  const handleEmailFocus = () => setEmailFocus(!emailFocus);
+  const handlePasswordFocus = () => setPasswordFocus(!passwordFocus);
+
+  const handleSubmit = () => {
     console.log(email, password);
     console.log(validator.isEmail(email));
     console.log(validator.isStrongPassword(password));
   };
+
+  let errorMessage;
 
   return (
     <div className={classes.Wrapper}>
@@ -32,17 +39,31 @@ const Login = () => {
             type="email"
             placeholder="Email"
             onChange={(event) => handleEmailInput(event.target.value)}
+            onFocus={handleEmailFocus}
+            onBlur={handleEmailFocus}
+            style={
+              emailFocus
+                ? { border: "1px solid #a7a7a7" }
+                : { border: "1px solid #dbdbdb" }
+            }
           />
           <input
             label="password"
             type="password"
             placeholder="Password"
             onChange={(event) => handlePasswordInput(event.target.value)}
+            onFocus={handlePasswordFocus}
+            onBlur={handlePasswordFocus}
+            style={
+              passwordFocus
+                ? { border: "1px solid #a7a7a7" }
+                : { border: "1px solid #dbdbdb" }
+            }
           />
           <button
-            onClick={handleValidation}
+            onClick={handleSubmit}
             style={
-              password.length >= 8
+              password.length >= 8 && email.length > 0
                 ? { backgroundColor: "#0095f6", cursor: "pointer" }
                 : { backgroundColor: "#b2dffc", cursor: "default" }
             }
@@ -57,6 +78,7 @@ const Login = () => {
             style={{
               textDecoration: "none",
               color: "rgb(18 142 221)",
+              fontWeight: "600",
             }}
           >
             Sign up

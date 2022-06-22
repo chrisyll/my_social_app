@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./containers/Layout/Layout";
 import Login from "./components/LandingPage/Login/Login";
-import Signup from "./components/LandingPage/SignUp/Signup";
+import Signup from "./components/LandingPage/Signup/Signup";
 
 class App extends Component {
   render() {
