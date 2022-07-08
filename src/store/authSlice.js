@@ -3,7 +3,6 @@ import axios from "axios";
 
 const initialState = {
   token: null,
-  expirationDate: null,
   username: null,
   error: false,
   loading: false,
@@ -22,12 +21,8 @@ export const authSignUp = createAsyncThunk("singUp", async (user, thunkAPI) => {
     )
     .then((response) => {
       thunkAPI.dispatch(authPostUserInfo(user));
-      const expirationDate = new Date(
-        new Date().getTime() + response.data.expiresIn * 1000
-      );
-      console.log("ExpirationDate", expirationDate);
+      //removed expiration date
       payload = {
-        // expirationDate: expirationDate,
         token: response.data.idToken,
         username: user.username,
       };
@@ -72,11 +67,7 @@ export const authLogin = createAsyncThunk(
         info
       )
       .then((response) => {
-        const expirationDate = new Date(
-          new Date().getTime() + response.data.expiresIn * 1000
-        );
         payload = {
-          // expirationDate: expirationDate,
           token: response.data.idToken,
         };
       });
@@ -109,7 +100,6 @@ export const authSlice = createSlice({
   reducers: {
     authLogout: (state, action) => {
       state.token = null;
-      state.expirationDate = null;
       state.username = null;
       state.error = false;
       state.loading = false;
@@ -122,7 +112,6 @@ export const authSlice = createSlice({
     },
     [authSignUp.fulfilled]: (state, action) => {
       state.token = action.payload.token;
-      // state.expirationDate = action.payload.expirationDate;
       state.username = action.payload.username;
       state.loading = false;
     },
@@ -136,7 +125,6 @@ export const authSlice = createSlice({
     },
     [authLogin.fulfilled]: (state, action) => {
       state.token = action.payload.token;
-      // state.expirationDate = action.payload.expirationDate;
       state.loading = false;
     },
     [authLogin.rejected]: (state, action) => {
