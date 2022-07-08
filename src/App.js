@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./containers/Layout/Layout";
-import Login from "./components/LandingPage/Login/Login";
-import Signup from "./components/LandingPage/Signup/Signup";
+import Login from "./components/Auth/Login/Login";
+import Signup from "./components/Auth/Signup/Signup";
 
 class App extends Component {
   render() {

@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import classes from "./Login.module.css";
 import validator from "validator";
+import { authLogin, authGetUserInfo } from "../../../store/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
+
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const stateError = useSelector((state) => state.error);
 
   const handleEmailInput = (value) => {
     setEmail(value);
@@ -20,12 +26,23 @@ const Login = () => {
   const handlePasswordFocus = () => setPasswordFocus(!passwordFocus);
 
   const handleSubmit = () => {
-    console.log(email, password);
-    console.log(validator.isEmail(email));
-    console.log(validator.isStrongPassword(password));
+    if (validator.isEmail(email) && validator.isStrongPassword(password)) {
+      const info = {
+        email: email,
+        password: password,
+        returnSecureToken: true,
+      };
+      dispatch(authLogin(info))
+        .then(() => {
+          if (stateError === false) {
+            dispatch(authGetUserInfo(email)).then(() => navigate("/"));
+          }
+        })
+        .catch((error) =>
+          console.log("An error occured while logging in", error)
+        );
+    }
   };
-
-  let errorMessage;
 
   return (
     <div className={classes.Wrapper}>

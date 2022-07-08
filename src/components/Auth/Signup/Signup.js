@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import validator from "validator";
 import classes from "./Signup.module.css";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { authSignUp } from "../../../store/authSlice";
 
 const Signup = () => {
   const [email, setEmail] = useState(" ");
@@ -13,6 +16,10 @@ const Signup = () => {
   const [nameFocus, setNameFocus] = useState(false);
   const [usernameFocus, setUsernameFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const error = useSelector((state) => state.error);
 
   const handleEmailInput = (value) => {
     setEmail(value);
@@ -35,12 +42,49 @@ const Signup = () => {
   const handleUsernameFocus = () => setUsernameFocus(!usernameFocus);
   const handlePasswordFocus = () => setPasswordFocus(!passwordFocus);
 
-  const handleSubmit = () => {
-    console.log(email, name, username, password);
-    console.log(validator.isEmail(email));
-    console.log(validator.isAlpha(name));
-    console.log(validator.isAlphanumeric(username));
-    console.log(validator.isStrongPassword(password));
+  const handleValidation = () => {
+    if (
+      validator.isEmail(email) &&
+      validator.isAlpha(name) &&
+      validator.isAlphanumeric(username) &&
+      validator.isStrongPassword(password)
+    ) {
+      const user = {
+        email: email,
+        name: name,
+        username: username,
+        password: password,
+      };
+
+      const queryParams = `?orderBy="username"&equalTo="${username}"`;
+
+      axios
+        .get(
+          "https://instaclone-43fee-default-rtdb.europe-west1.firebasedatabase.app/user.json" +
+            queryParams
+        )
+        .then((response) => {
+          if (Object.keys(response.data).length === 0) {
+            handleSubmit(user);
+          } else {
+            console.log("username already in use!");
+          }
+        })
+        .catch((error) => {});
+    }
+  };
+
+  const handleSubmit = (user) => {
+    dispatch(authSignUp(user))
+      .unwrap()
+      .then(() => {
+        if (error === false) {
+          navigate("/");
+        }
+      })
+      .catch((error) =>
+        console.log("An error occured while signing up", error)
+      );
   };
 
   return (
@@ -107,7 +151,7 @@ const Signup = () => {
                 ? { backgroundColor: "#0095f6", cursor: "pointer" }
                 : { backgroundColor: "#b2dffc", cursor: "default" }
             }
-            onClick={handleSubmit}
+            onClick={handleValidation}
           >
             Sign up
           </button>
